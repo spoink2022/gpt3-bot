@@ -18,7 +18,7 @@ module.exports.sendPrompt = async function(msg) {
     if (user.banned) return msg.reply('You are banned from using this bot!');
 
     // Filter Prompt
-    let prompt = msg.content.replace(`<@${DISCORD_CLIENT_ID}>`, '').trim();
+    let prompt = `GPT-3 Bot, ` + msg.content.replace(`<@${DISCORD_CLIENT_ID}>`, '').trim();
 
     if (msg.channel.type === 'GUILD_TEXT') {
         msg.mentions.members.forEach(guildMember => {
