@@ -68,7 +68,7 @@ module.exports.sendTemperature = async function(interaction) {
 
 module.exports.sendMaxResponseTokens = async function(interaction) {
     const user = await db.users.fetchUser(interaction.user.id);
-    const maxResponseTokens = Math.min(Math.max(interaction.options.getInteger('tokens'), 0), 250);
+    const maxResponseTokens = Math.min(Math.max(interaction.options.getInteger('tokens'), 0), 2000); // set to 250 max for prod
     
     await db.users.setColumns(user.userid, { max_tokens: maxResponseTokens });
 
