@@ -58,6 +58,8 @@ module.exports.sendPrompt = async function(msg) {
     const actualCost = Math.ceil((promptCost + responseCost) * ENGINE_PRICES[user.engine]);
     await db.users.updateColumns(user.userid, { tokens: -actualCost });
 
+    response.safe = true; // remove in prod
+
     // Construct Embed
     let finalEmbed = {
         color: response.safe ? 0x00cc00 : 0xcc0000,
